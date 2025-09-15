@@ -1,24 +1,22 @@
 package pedidos.controller;
 
+
 import pedidos.model.Cliente;
 import pedidos.repository.ClienteRepository;
 
-public class PedidoController {
-    // O Controller agora "tem um" Repository, em vez de "ser um" Cliente
+public class ClienteController {
     private ClienteRepository clienteRepository;
 
-    public PedidoController() {
+    public ClienteController() {
         this.clienteRepository = new ClienteRepository();
     }
 
-    // Método para realizar o login
-    public boolean realizarLogin(String email, String senha) {
-        System.out.println("Tentando autenticar usuário...");
+    public Cliente realizarLogin(String email, String senha) {
         return clienteRepository.autenticar(email, senha);
     }
-    public void cadastrarUsuario(String email, String senha){
-        System.out.println("Tentando cadastrar usuário");
-        Cliente cliente = new Cliente(email,senha);
-        clienteRepository.salvar(cliente);
+
+    public void cadastrarNovoCliente(String email, String senha) {
+        Cliente novoCliente = new Cliente(email, senha);
+        clienteRepository.salvar(novoCliente);
     }
 }
